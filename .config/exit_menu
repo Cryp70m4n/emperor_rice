@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DMENU='dmenu -i -l 4'
+choice=$(echo -e "exit\npoweroff\nsuspend\nreboot" | $DMENU)
+
+case "$choice" in
+    exit) exit 0;;
+    poweroff) systemctl poweroff;;
+    suspend) systemctl suspend;;
+    reboot) systemctl reboot;;
+esac

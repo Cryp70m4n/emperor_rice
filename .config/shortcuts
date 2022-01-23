@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DMENU='dmenu -i -l 10'
+choice=$(echo -e "browser\nimages\nshutdown\nquit-shortcuts" | $DMENU)
+
+case "$choice" in
+    browser) $1 | cat ~/.config/bookmarks | dmenu -i -l 10 | xargs brave;;
+    images) cd ~/Pictures | ls ~/Pictures/*.{png,jpg,jpeg} | dmenu -i -l 10 | xargs feh;;
+    shutdown) ~/.config/exit_menu;;
+    quit-shortcuts) exit 0;;
+esac
